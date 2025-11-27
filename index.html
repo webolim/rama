@@ -8,6 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<style>
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
+  font-size: 2rem;
+}
+</style>
     <style>
         :root {
             --stone-dark: #1c1917;
@@ -288,9 +299,7 @@
                 <!-- Toolbar: Sidebar Toggle (Desktop) -->
                 <div class="absolute top-4 left-4 z-30 hidden md:block">
                     <button onclick="toggleSidebar()" class="text-stone-500 hover:text-amber-500 bg-black/50 p-2 rounded-full border border-stone-700 hover:border-amber-600 transition-colors" title="Toggle Info Panel">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                       <span id="sidebar-toggle-icon" class="material-symbols-outlined">left_panel_close</span>
                     </button>
                 </div>
                 
@@ -525,22 +534,25 @@
             updateTransform();
         }
 
-        function toggleSidebar() {
-            const sidebar = elements.reader.sidebar;
-            const expandBtn = elements.reader.expandBtn;
-            
-            if (sidebar.classList.contains('w-0')) {
-                // Expand
-                sidebar.classList.remove('w-0', 'p-0', 'border-none', 'opacity-0');
-                sidebar.classList.add('w-80', 'p-8', 'border-r', 'opacity-100');
-                expandBtn.classList.add('hidden');
-            } else {
-                // Collapse
-                sidebar.classList.remove('w-80', 'p-8', 'border-r', 'opacity-100');
-                sidebar.classList.add('w-0', 'p-0', 'border-none', 'opacity-0');
-                expandBtn.classList.remove('hidden');
-            }
-        }
+    function toggleSidebar() {
+    const sidebar = elements.reader.sidebar;
+    const expandBtn = elements.reader.expandBtn;
+    const iconSpan = document.getElementById('sidebar-toggle-icon');
+    
+    if (sidebar.classList.contains('w-0')) {
+        // Expand
+        sidebar.classList.remove('w-0', 'p-0', 'border-none', 'opacity-0');
+        sidebar.classList.add('w-80', 'p-8', 'border-r', 'opacity-100');
+        expandBtn.classList.add('hidden');
+        if (iconSpan) iconSpan.textContent = "left_panel_open"; // Show "open" icon
+    } else {
+        // Collapse
+        sidebar.classList.remove('w-80', 'p-8', 'border-r', 'opacity-100');
+        sidebar.classList.add('w-0', 'p-0', 'border-none', 'opacity-0');
+        expandBtn.classList.remove('hidden');
+        if (iconSpan) iconSpan.textContent = "left_panel_close"; // Show "close" icon
+    }
+}
 
         // --- SCROLL HANDLING ---
         // Simple scroll effect for navbar transparency/shadow
