@@ -1,0 +1,149 @@
+:root {
+            --stone-dark: #1c1917;
+            --stone-light: #292524;
+            --gold-light: #fcd34d;
+            --gold-mid: #d97706;
+            --gold-dark: #92400e;
+            --antique-white: #f5f5f4;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--stone-dark);
+            color: #e7e5e4;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .title-font {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        /* Stone Texture */
+        .bg-stone-texture {
+            background-color: #1c1917;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23292524' fill-opacity='0.8'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Golden Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(to bottom, #fcd34d, #d97706, #78350f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Ornate Border - Simulating Gold Frame */
+        .ornate-border {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to bottom right, #b45309, #fcd34d, #78350f) 1;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.2);
+        }
+
+        .ornate-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-style: solid;
+            border-color: #d97706;
+            transition: all 0.3s ease;
+        }
+        .top-left { top: 0; left: 0; border-width: 2px 0 0 2px; }
+        .top-right { top: 0; right: 0; border-width: 2px 2px 0 0; }
+        .bottom-left { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+        .bottom-right { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+        .sanctum-card:hover .ornate-corner {
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+
+        /* Prevent Image Dragging for smoother pan */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            user-select: none;
+        }
+
+        /* Lamp Glow Animation */
+        .lamp-flame {
+            box-shadow: 0 -5px 10px 2px rgba(251, 191, 36, 0.5);
+            animation: flicker 3s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.9; transform: scale(0.95); }
+        }
+
+        /* Scan Viewer Styles */
+        .scan-page {
+            background-color: #e5e5e5;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+            transform-origin: center top;
+            transition: transform 0.3s ease;
+        }
+
+        /* Reader Layouts */
+        .reader-spread {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 0; /* No gap for realistic book spine */
+        }
+
+        .reader-spread img {
+            max-height: 100%;
+            max-width: 50%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .reader-single {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .reader-single img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Book Spine Effect for Spread */
+        .spine-shadow {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.3) 50%, rgba(0,0,0,0));
+            z-index: 30;
+            pointer-events: none;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1c1917; }
+        ::-webkit-scrollbar-thumb { background: #78350f; border-radius: 4px; border: 1px solid #d97706; }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .fade-out { animation: fadeOut 1s ease-in forwards; }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        html {
+            scroll-behavior: smooth;
+        }
